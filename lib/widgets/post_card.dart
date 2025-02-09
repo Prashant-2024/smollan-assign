@@ -12,17 +12,17 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
-  int _likes = 0; // Local state for UI-only like count
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
-    _likes = widget.post.likes; // Initialize with post likes
+    _likes = widget.post.likes;
   }
 
   void _incrementLike() {
     setState(() {
-      _likes++; // Increase likes (UI-only, no API call)
+      _likes++;
     });
   }
 
@@ -35,7 +35,6 @@ class _PostCardState extends State<PostCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ✅ User Info Section (Profile Pic + Username)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             child: Row(
@@ -65,7 +64,6 @@ class _PostCardState extends State<PostCard> {
             ),
           ),
 
-          // ✅ Post Image
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.network(
@@ -83,7 +81,6 @@ class _PostCardState extends State<PostCard> {
             ),
           ),
 
-          // ✅ Post Caption
           Padding(
             padding: const EdgeInsets.all(10),
             child: Text(
@@ -92,7 +89,6 @@ class _PostCardState extends State<PostCard> {
             ),
           ),
 
-          // ✅ Likes & Comments Row
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
@@ -109,9 +105,9 @@ class _PostCardState extends State<PostCard> {
                   ],
                 ),
 
-                // Comments Count
-                Text("${widget.post.comments} Comments",
-                    style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                // // Comments Count
+                // Text("${widget.post.comments} Comments",
+                //     style: const TextStyle(fontSize: 14, color: Colors.grey)),
               ],
             ),
           ),

@@ -3,7 +3,7 @@ import '../models/post_model.dart';
 import '../services/api_service.dart';
 
 class PostPage extends StatefulWidget {
-  const PostPage({super.key}); // ✅ No need to pass postId
+  const PostPage({super.key});
 
   @override
   _PostPageState createState() => _PostPageState();
@@ -21,10 +21,9 @@ class _PostPageState extends State<PostPage> {
     _fetchPostData();
   }
 
-  // ✅ Fetch the latest post data from API
   Future<void> _fetchPostData() async {
     try {
-      Post post = await ApiService.fetchPost(); // ✅ Fetch Single Post API
+      Post post = await ApiService.fetchPost();
       setState(() {
         _post = post;
         _likes = post.likes;
@@ -57,7 +56,7 @@ class _PostPageState extends State<PostPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ✅ Post Header (User Info)
+            // Post Header (User Info)
             Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
@@ -75,7 +74,7 @@ class _PostPageState extends State<PostPage> {
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        _post!.postDate ?? "", // ✅ Show date if available
+                        _post!.postDate ?? "",
                         style: const TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                     ],
@@ -84,7 +83,7 @@ class _PostPageState extends State<PostPage> {
               ),
             ),
 
-            // ✅ Post Image
+            // Post Image
             Image.network(
               _post!.imageUrl,
               width: double.infinity,
@@ -94,7 +93,7 @@ class _PostPageState extends State<PostPage> {
 
             const SizedBox(height: 10),
 
-            // ✅ Like & Comment Section
+            // Like & Comment Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -118,7 +117,7 @@ class _PostPageState extends State<PostPage> {
 
             const SizedBox(height: 5),
 
-            // ✅ Post Caption & Text
+            // Post Caption & Text
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -137,19 +136,6 @@ class _PostPageState extends State<PostPage> {
                 ],
               ),
             ),
-
-            const SizedBox(height: 10),
-
-            // ✅ Comments Section (Future Expansion)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                "View all ${_post!.comments} comments",
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-            ),
-
-            const SizedBox(height: 20),
           ],
         ),
       ),

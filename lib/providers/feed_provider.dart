@@ -20,7 +20,7 @@ class FeedProvider with ChangeNotifier {
       final data = await ApiService.fetchFeed();
       _stories = data["stories"];
       _posts = data["posts"];
-      print("Feed Data Loaded: ${_stories.length} stories, ${_posts.length} posts"); // ✅ Debugging log
+      print("Feed Data Loaded: ${_stories.length} stories, ${_posts.length} posts");
     } catch (e) {
       print("Feed Error: $e");
       _stories = [];

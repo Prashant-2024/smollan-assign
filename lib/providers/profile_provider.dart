@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/profile_model.dart';
-import '../services/api_service.dart'; // ✅ Import API service
+import '../services/api_service.dart';
 
 class ProfileProvider extends ChangeNotifier {
   Profile? _profile;
@@ -11,14 +11,13 @@ class ProfileProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
-  // ✅ Fetch profile from API
   Future<void> fetchProfile() async {
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
 
     try {
-      _profile = await ApiService.fetchProfile(); // ✅ Call API service
+      _profile = await ApiService.fetchProfile();
     } catch (e) {
       _profile = null;
       _errorMessage = "Error fetching profile: ${e.toString()}";
@@ -28,7 +27,6 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ✅ Refresh profile data
   Future<void> refreshProfile() async {
     await fetchProfile();
   }

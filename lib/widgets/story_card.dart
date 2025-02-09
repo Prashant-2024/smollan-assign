@@ -14,7 +14,7 @@ class StoryCard extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: Colors.red, width: 3), // Instagram-style border
+            border: Border.all(color: Colors.red, width: 3),
           ),
           child: CircleAvatar(
             radius: 35,

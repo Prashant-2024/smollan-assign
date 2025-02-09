@@ -4,7 +4,7 @@ import '../providers/theme_provider.dart';
 import '../providers/feed_provider.dart';
 import '../widgets/story_card.dart';
 import '../widgets/post_card.dart';
-import 'PostPage.dart'; // ✅ Import PostPage
+import 'PostPage.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({super.key});
@@ -41,54 +41,52 @@ class _FeedPageState extends State<FeedPage> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [
           IconButton(
-            icon: Icon(themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+            icon: Icon(
+                themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode),
             onPressed: themeProvider.toggleTheme,
           ),
         ],
       ),
       body: feedProvider.isLoading
-          ? const Center(child: CircularProgressIndicator()) // ✅ Show loader while fetching
-          : RefreshIndicator(
-        onRefresh: () async => feedProvider.fetchFeed(), // ✅ Pull to refresh support
-        child: CustomScrollView(
-          slivers: [
-            // ✅ Stories Section (Horizontal Scroll)
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 110,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  itemCount: feedProvider.stories.length,
-                  itemBuilder: (context, index) {
-                    return StoryCard(story: feedProvider.stories[index]);
-                  },
+          ? const Center(child: CircularProgressIndicator())
+          : CustomScrollView(
+              slivers: [
+                // Stories Section
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 110,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      itemCount: feedProvider.stories.length,
+                      itemBuilder: (context, index) {
+                        return StoryCard(story: feedProvider.stories[index]);
+                      },
+                    ),
+                  ),
                 ),
-              ),
-            ),
 
-            // ✅ Posts Section (Clickable Posts)
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
+                // Posts Section
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PostPage(), // ✅ No need to pass postId
-                        ),
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PostPage(),
+                            ),
+                          );
+                        },
+                        child: PostCard(post: feedProvider.posts[index]),
                       );
                     },
-                    child: PostCard(post: feedProvider.posts[index]),
-                  );
-                },
-                childCount: feedProvider.posts.length,
-              ),
+                    childCount: feedProvider.posts.length,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
     );
   }
 }

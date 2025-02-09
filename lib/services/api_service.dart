@@ -13,7 +13,7 @@ class ApiService {
   static Future<Map<String, dynamic>> fetchFeed() async {
     try {
       final response = await http.get(Uri.parse(feedUrl));
-      print("API Response: ${response.body}"); // ✅ Debug API response
+      print("API Response: ${response.body}");
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);

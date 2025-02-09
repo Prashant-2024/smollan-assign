@@ -38,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
-                  // ✅ Profile Header
+                  // Profile Header
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
@@ -74,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
 
-                  // ✅ Bio Section
+                  // Bio Section
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
@@ -103,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
 
-                  // ✅ Highlights Section
+                  // Highlights Section
                   if (profile.highlights.isNotEmpty)
                     SizedBox(
                       height: 100,
@@ -130,7 +130,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
 
-                  // ✅ Gallery Grid
+                  // Gallery Grid
                   if (profile.gallery.isNotEmpty)
                     GridView.builder(
                       shrinkWrap: true,

@@ -29,25 +29,25 @@ class Post {
       profilePic: json['profile_pic'] ?? '',
       imageUrl: json['image'] ?? '',
       caption: json['caption'] ?? '',
-      likes: _extractLikes(json['likes']), // ✅ Convert likes correctly
-      comments: _parseToInt(json['comments']), // ✅ Convert comments correctly
+      likes: _extractLikes(json['likes']),
+      comments: _parseToInt(json['comments']),
       postDate: json['post_date'],
       postText: json['post_text'],
     );
   }
 
-  // ✅ Extract numeric value from likes string
+  // Extract numeric value from likes string
   static int _extractLikes(dynamic likesData) {
     if (likesData is int) {
       return likesData; // ✅ Already an integer
     } else if (likesData is String) {
       final match = RegExp(r'\d+').firstMatch(likesData);
-      return match != null ? int.parse(match.group(0)!) : 0; // Extract first number
+      return match != null ? int.parse(match.group(0)!) : 0;
     }
     return 0; // Default if no valid number is found
   }
 
-  // ✅ Ensure `comments` are properly converted to int
+  // `comments` converted to int
   static int _parseToInt(dynamic value) {
     if (value is int) {
       return value;
