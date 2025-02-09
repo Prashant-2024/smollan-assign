@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "201562558304",
+    "project_id": "smollan-assign",
+    "storage_bucket": "smollan-assign.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201562558304:android:69801768a05663636a1805",
+        "android_client_info": {
+          "package_name": "com.example.smollan_assign"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1on9si6j8RBIjOfvdMsnMrrNzuQR4rgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
